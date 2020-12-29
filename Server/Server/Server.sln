@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server.csproj", "{AB44301A-6F64-4127-81A9-5EBBDACBCF9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFCreateDatabase", "..\CFCreateDatabase\CFCreateDatabase.csproj", "{C4774F32-78E9-40E9-AAFC-FE24238D7FD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB44301A-6F64-4127-81A9-5EBBDACBCF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB44301A-6F64-4127-81A9-5EBBDACBCF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB44301A-6F64-4127-81A9-5EBBDACBCF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB44301A-6F64-4127-81A9-5EBBDACBCF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4774F32-78E9-40E9-AAFC-FE24238D7FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4774F32-78E9-40E9-AAFC-FE24238D7FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4774F32-78E9-40E9-AAFC-FE24238D7FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4774F32-78E9-40E9-AAFC-FE24238D7FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2897413A-9D4B-477F-A939-CE5EE2F94E53}
+	EndGlobalSection
+EndGlobal

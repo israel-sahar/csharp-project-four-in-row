@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="fourinrowDB_Aviv_SaharModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GameRecords">
+          <Key>
+            <PropertyRef Name="GameRecordId" />
+          </Key>
+          <Property Name="GameRecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecordTime" Type="datetime" Nullable="false" />
+          <Property Name="Column" Type="int" Nullable="false" />
+          <Property Name="Game_GameId" Type="int" />
+          <Property Name="User_UserName" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="WinnerName" Type="nvarchar(max)" />
+          <Property Name="WinnerScore" Type="int" Nullable="false" />
+          <Property Name="LoserName" Type="nvarchar(max)" />
+          <Property Name="LoserScore" Type="int" Nullable="false" />
+          <Property Name="IsDraw" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserGames">
+          <Key>
+            <PropertyRef Name="User_UserName" />
+            <PropertyRef Name="Game_GameId" />
+          </Key>
+          <Property Name="User_UserName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Game_GameId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="HashedPassword" Type="nvarchar(max)" />
+          <Property Name="GameLoses" Type="int" Nullable="false" />
+          <Property Name="GameWins" Type="int" Nullable="false" />
+          <Property Name="GameDraws" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_GameRecords_dbo_Games_Game_GameId">
+          <End Role="Games" Type="Self.Games" Multiplicity="0..1" />
+          <End Role="GameRecords" Type="Self.GameRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="GameId" />
+            </Principal>
+            <Dependent Role="GameRecords">
+              <PropertyRef Name="Game_GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GameRecords_dbo_Users_User_UserName">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="GameRecords" Type="Self.GameRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="GameRecords">
+              <PropertyRef Name="User_UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserGames_dbo_Games_Game_GameId">
+          <End Role="Games" Type="Self.Games" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserGames" Type="Self.UserGames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="GameId" />
+            </Principal>
+            <Dependent Role="UserGames">
+              <PropertyRef Name="Game_GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserGames_dbo_Users_User_UserName">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserGames" Type="Self.UserGames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="UserGames">
+              <PropertyRef Name="User_UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fourinrowDB_Aviv_SaharModelStoreContainer">
+          <EntitySet Name="GameRecords" EntityType="Self.GameRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGames" EntityType="Self.UserGames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_GameRecords_dbo_Games_Game_GameId" Association="Self.FK_dbo_GameRecords_dbo_Games_Game_GameId">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameRecords" EntitySet="GameRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GameRecords_dbo_Users_User_UserName" Association="Self.FK_dbo_GameRecords_dbo_Users_User_UserName">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GameRecords" EntitySet="GameRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserGames_dbo_Games_Game_GameId" Association="Self.FK_dbo_UserGames_dbo_Games_Game_GameId">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="UserGames" EntitySet="UserGames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserGames_dbo_Users_User_UserName" Association="Self.FK_dbo_UserGames_dbo_Users_User_UserName">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserGames" EntitySet="UserGames" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fourinrowDB_Aviv_SaharModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GameRecord">
+          <Key>
+            <PropertyRef Name="GameRecordId" />
+          </Key>
+          <Property Name="GameRecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Column" Type="Int32" Nullable="false" />
+          <Property Name="GameId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_dbo_GameRecords_dbo_Games_Game_GameId" FromRole="GameRecords" ToRole="Games" />
+          <NavigationProperty Name="User" Relationship="Self.FK_dbo_GameRecords_dbo_Users_User_UserName" FromRole="GameRecords" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="WinnerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WinnerScore" Type="Int32" Nullable="false" />
+          <Property Name="LoserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LoserScore" Type="Int32" Nullable="false" />
+          <Property Name="IsDraw" Type="Boolean" />
+          <NavigationProperty Name="GameRecords" Relationship="Self.FK_dbo_GameRecords_dbo_Games_Game_GameId" FromRole="Games" ToRole="GameRecords" />
+          <NavigationProperty Name="Users" Relationship="Self.UserGames" FromRole="Games" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HashedPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GameLoses" Type="Int32" Nullable="false" />
+          <Property Name="GameWins" Type="Int32" Nullable="false" />
+          <Property Name="GameDraws" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GameRecords" Relationship="Self.FK_dbo_GameRecords_dbo_Users_User_UserName" FromRole="Users" ToRole="GameRecords" />
+          <NavigationProperty Name="Games" Relationship="Self.UserGames" FromRole="Users" ToRole="Games" />
+        </EntityType>
+        <Association Name="FK_dbo_GameRecords_dbo_Games_Game_GameId">
+          <End Role="Games" Type="Self.Game" Multiplicity="0..1" />
+          <End Role="GameRecords" Type="Self.GameRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="GameId" />
+            </Principal>
+            <Dependent Role="GameRecords">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GameRecords_dbo_Users_User_UserName">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="GameRecords" Type="Self.GameRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="GameRecords">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserGames">
+          <End Role="Games" Type="Self.Game" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="fourinrowDB_Aviv_SaharEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GameRecords" EntityType="Self.GameRecord" />
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_dbo_GameRecords_dbo_Games_Game_GameId" Association="Self.FK_dbo_GameRecords_dbo_Games_Game_GameId">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameRecords" EntitySet="GameRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GameRecords_dbo_Users_User_UserName" Association="Self.FK_dbo_GameRecords_dbo_Users_User_UserName">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GameRecords" EntitySet="GameRecords" />
+          </AssociationSet>
+          <AssociationSet Name="UserGames" Association="Self.UserGames">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fourinrowDB_Aviv_SaharModelStoreContainer" CdmEntityContainer="fourinrowDB_Aviv_SaharEntities">
+          <EntitySetMapping Name="GameRecords">
+            <EntityTypeMapping TypeName="fourinrowDB_Aviv_SaharModel.GameRecord">
+              <MappingFragment StoreEntitySet="GameRecords">
+                <ScalarProperty Name="GameRecordId" ColumnName="GameRecordId" />
+                <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
+                <ScalarProperty Name="Column" ColumnName="Column" />
+                <ScalarProperty Name="GameId" ColumnName="Game_GameId" />
+                <ScalarProperty Name="UserName" ColumnName="User_UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="fourinrowDB_Aviv_SaharModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="WinnerName" ColumnName="WinnerName" />
+                <ScalarProperty Name="WinnerScore" ColumnName="WinnerScore" />
+                <ScalarProperty Name="LoserName" ColumnName="LoserName" />
+                <ScalarProperty Name="LoserScore" ColumnName="LoserScore" />
+                <ScalarProperty Name="IsDraw" ColumnName="IsDraw" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="fourinrowDB_Aviv_SaharModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
+                <ScalarProperty Name="GameLoses" ColumnName="GameLoses" />
+                <ScalarProperty Name="GameWins" ColumnName="GameWins" />
+                <ScalarProperty Name="GameDraws" ColumnName="GameDraws" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserGames" TypeName="fourinrowDB_Aviv_SaharModel.UserGames" StoreEntitySet="UserGames">
+            <EndProperty Name="Games">
+              <ScalarProperty Name="GameId" ColumnName="Game_GameId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserName" ColumnName="User_UserName" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

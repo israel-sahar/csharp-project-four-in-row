@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fourinrowDB_Aviv_SaharModelStoreContainer" CdmEntityContainer="fourinrowDB_Aviv_SaharEntities">
+    <EntitySetMapping Name="GameRecords">
+      <EntityTypeMapping TypeName="fourinrowDB_Aviv_SaharModel.GameRecord">
+        <MappingFragment StoreEntitySet="GameRecords">
+          <ScalarProperty Name="GameRecordId" ColumnName="GameRecordId" />
+          <ScalarProperty Name="RecordTime" ColumnName="RecordTime" />
+          <ScalarProperty Name="Column" ColumnName="Column" />
+          <ScalarProperty Name="GameId" ColumnName="Game_GameId" />
+          <ScalarProperty Name="UserName" ColumnName="User_UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="fourinrowDB_Aviv_SaharModel.Game">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="WinnerName" ColumnName="WinnerName" />
+          <ScalarProperty Name="WinnerScore" ColumnName="WinnerScore" />
+          <ScalarProperty Name="LoserName" ColumnName="LoserName" />
+          <ScalarProperty Name="LoserScore" ColumnName="LoserScore" />
+          <ScalarProperty Name="IsDraw" ColumnName="IsDraw" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="fourinrowDB_Aviv_SaharModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
+          <ScalarProperty Name="GameLoses" ColumnName="GameLoses" />
+          <ScalarProperty Name="GameWins" ColumnName="GameWins" />
+          <ScalarProperty Name="GameDraws" ColumnName="GameDraws" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserGames" TypeName="fourinrowDB_Aviv_SaharModel.UserGames" StoreEntitySet="UserGames">
+      <EndProperty Name="Games">
+        <ScalarProperty Name="GameId" ColumnName="Game_GameId" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="UserName" ColumnName="User_UserName" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
