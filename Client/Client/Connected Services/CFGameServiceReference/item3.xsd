@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8734/Design_Time_Addresses/Server/Service1/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="ArrayOfstring">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+  <xs:complexType name="ArrayOfKeyValueOfstringValueTupleOfintintintintintU6ho3Bhd">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringValueTupleOfintintintintintU6ho3Bhd">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" nillable="true" type="xs:string" />
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="Value" type="q1:ValueTupleOfintintintintint" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfstringValueTupleOfintintintintintU6ho3Bhd" nillable="true" type="tns:ArrayOfKeyValueOfstringValueTupleOfintintintintintU6ho3Bhd" />
+  <xs:complexType name="ArrayOfKeyValueOfintValueTupleOfdateTimeNullableOfdateTimestringintstringintNullableOfbooleanLNfSvwkHU6ho3Bhd">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintValueTupleOfdateTimeNullableOfdateTimestringintstringintNullableOfbooleanLNfSvwkHU6ho3Bhd">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:int" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" name="Value" type="q2:ValueTupleOfdateTimeNullableOfdateTimestringintstringintNullableOfbooleanLNfSvwkH" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfintValueTupleOfdateTimeNullableOfdateTimestringintstringintNullableOfbooleanLNfSvwkHU6ho3Bhd" nillable="true" type="tns:ArrayOfKeyValueOfintValueTupleOfdateTimeNullableOfdateTimestringintstringintNullableOfbooleanLNfSvwkHU6ho3Bhd" />
+  <xs:complexType name="ArrayOfKeyValueOfintValueTupleOfdateTimestringstringU6ho3Bhd">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintValueTupleOfdateTimestringstringU6ho3Bhd">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:int" />
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System" name="Value" type="q3:ValueTupleOfdateTimestringstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfintValueTupleOfdateTimestringstringU6ho3Bhd" nillable="true" type="tns:ArrayOfKeyValueOfintValueTupleOfdateTimestringstringU6ho3Bhd" />
+</xs:schema>

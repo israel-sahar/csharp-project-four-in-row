@@ -1,0 +1,16 @@
+﻿<Window x:Class="Client.ActiveGamesDisplayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="Active Games" Height="377.802" Width="350.989" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="images/login.png" />
+    </Window.Background>
+    <Grid>
+        <DataGrid Margin="10,20,20,10" Background="Azure" Name="GamesGrid" CanUserAddRows="False" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+        <Label Content="No games to show." FontSize="24" FontWeight="Heavy" Foreground="Bisque" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" Name="NoGamesLabel"/>
+    </Grid>
+</Window>
